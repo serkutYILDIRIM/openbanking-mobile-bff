@@ -1,5 +1,10 @@
-﻿using openbanking_mobile_bff.Common.Middleware;
+﻿﻿using openbanking_mobile_bff.Common.Middleware;
 using openbanking_mobile_bff.Configuration;
+using openbanking_mobile_bff.Domain.Account.Services;
+using openbanking_mobile_bff.Domain.Card.Services;
+using openbanking_mobile_bff.Domain.Consent.Services;
+using openbanking_mobile_bff.Domain.Gkd.Services;
+using openbanking_mobile_bff.Domain.Payment.Services;
 using openbanking_mobile_bff.Filters;
 using openbanking_mobile_bff.Infrastructure.Cache;
 
@@ -65,6 +70,12 @@ public static class ServiceCollectionExtensions
         services.AddBffSwagger(configuration);
         services.AddBffRateLimiting(configuration);
         services.AddBffHealthChecks();
+
+        services.AddScoped<IConsentService, ConsentService>();
+        services.AddScoped<IAccountService, AccountService>();
+        services.AddScoped<IPaymentService, PaymentService>();
+        services.AddScoped<ICardService, CardService>();
+        services.AddScoped<IGkdProxyService, GkdProxyService>();
 
         return services;
     }

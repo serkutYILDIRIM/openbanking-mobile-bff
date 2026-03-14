@@ -1,5 +1,7 @@
 ﻿using openbanking_mobile_bff.Configuration;
-using openbanking_mobile_bff.Infrastructure.HttpClients;
+using openbanking_mobile_bff.Infrastructure.HttpClients.ApiGateway;
+using openbanking_mobile_bff.Infrastructure.HttpClients.Hhs;
+using openbanking_mobile_bff.Infrastructure.HttpClients.Yos;
 using openbanking_mobile_bff.Infrastructure.Resilience;
 
 namespace openbanking_mobile_bff.Extensions;
@@ -28,7 +30,8 @@ public static class HttpClientExtensions
         services
             .AddHttpClient<IYosMicroserviceClient, YosMicroserviceClient>(client =>
             {
-                client.BaseAddress = new Uri(endpointOptions.YosMicroserviceBaseUrl);
+                if (!string.IsNullOrEmpty(endpointOptions.YosMicroserviceBaseUrl))
+                    client.BaseAddress = new Uri(endpointOptions.YosMicroserviceBaseUrl);
             })
             .AddPolicyHandler(RetryPolicy.GetRetryPolicy(policyOptions))
             .AddPolicyHandler(CircuitBreakerPolicy.GetCircuitBreakerPolicy(policyOptions))
@@ -37,7 +40,8 @@ public static class HttpClientExtensions
         services
             .AddHttpClient<IHhsMicroserviceClient, HhsMicroserviceClient>(client =>
             {
-                client.BaseAddress = new Uri(endpointOptions.HhsMicroserviceBaseUrl);
+                if (!string.IsNullOrEmpty(endpointOptions.HhsMicroserviceBaseUrl))
+                    client.BaseAddress = new Uri(endpointOptions.HhsMicroserviceBaseUrl);
             })
             .AddPolicyHandler(RetryPolicy.GetRetryPolicy(policyOptions))
             .AddPolicyHandler(CircuitBreakerPolicy.GetCircuitBreakerPolicy(policyOptions))
@@ -46,7 +50,8 @@ public static class HttpClientExtensions
         services
             .AddHttpClient<IApiGatewayClient, ApiGatewayClient>(client =>
             {
-                client.BaseAddress = new Uri(endpointOptions.ApiGatewayBaseUrl);
+                if (!string.IsNullOrEmpty(endpointOptions.ApiGatewayBaseUrl))
+                    client.BaseAddress = new Uri(endpointOptions.ApiGatewayBaseUrl);
             })
             .AddPolicyHandler(RetryPolicy.GetRetryPolicy(policyOptions))
             .AddPolicyHandler(CircuitBreakerPolicy.GetCircuitBreakerPolicy(policyOptions))
