@@ -1,23 +1,27 @@
+using openbanking_mobile_bff.Common.Middleware;
+using openbanking_mobile_bff.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+builder.Services.AddBffServices(builder.Configuration);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
+app.UseMiddleware<GlobalExceptionMiddleware>();
+app.UseMiddleware<RequestLoggingMiddleware>();
+app.UseMiddleware<OhvpsHeaderValidationMiddleware>();
+app.UseMiddleware<JwtBearerMiddleware>();
+app.UseMiddleware<JwsValidationMiddleware>();
 
 app.UseHttpsRedirection();
-
+app.UseRateLimiter();
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.UseBffSwagger();
+app.MapBffHealthChecks();
 
 app.Run();
+
+
