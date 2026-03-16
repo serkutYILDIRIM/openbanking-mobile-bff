@@ -1,4 +1,4 @@
-﻿﻿using openbanking_mobile_bff.Common.Middleware;
+﻿﻿﻿using openbanking_mobile_bff.Common.Middleware;
 using openbanking_mobile_bff.Configuration;
 using openbanking_mobile_bff.Domain.Account.Services;
 using openbanking_mobile_bff.Domain.Card.Services;
@@ -30,6 +30,10 @@ public static class ServiceCollectionExtensions
             configuration.GetSection("OhvpsHeaders"));
         services.Configure<SwaggerOptions>(
             configuration.GetSection("Swagger"));
+        services.Configure<HhsApiPathOptions>(
+            configuration.GetSection("HhsApiPaths"));
+        services.Configure<BffRoleOptions>(
+            configuration.GetSection("BffRole"));
 
         services.AddTransient<GlobalExceptionMiddleware>();
         services.AddTransient<RequestLoggingMiddleware>();

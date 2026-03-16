@@ -1,4 +1,4 @@
-﻿using openbanking_mobile_bff.Infrastructure.HttpClients.Hhs.Dtos;
+﻿﻿using openbanking_mobile_bff.Infrastructure.HttpClients.Hhs.Dtos;
 
 namespace openbanking_mobile_bff.Infrastructure.HttpClients.Hhs;
 
@@ -12,5 +12,8 @@ public interface IHhsMicroserviceClient
     Task<HhsCardDto> GetCardByRefAsync(string cardRef, Dictionary<string, string> headers);
     Task<HhsCardDto> GetCardDetailAsync(string cardRef, Dictionary<string, string> headers);
     Task<HhsCardDto> GetCardTransactionsAsync(string cardRef, Dictionary<string, string> headers);
+    Task<HhsPaymentDto> CreatePaymentOrderAsync(HhsPaymentDto request, Dictionary<string, string> headers);
+    Task<HhsPaymentDto> GetPaymentOrderAsync(string paymentOrderId, Dictionary<string, string> headers);
+    Task<object?> LinkAccountAsync(object request, Dictionary<string, string> headers);
 }
 
