@@ -32,6 +32,8 @@ public static class ServiceCollectionExtensions
             configuration.GetSection("Swagger"));
         services.Configure<HhsApiPathOptions>(
             configuration.GetSection("HhsApiPaths"));
+        services.Configure<BffRoleOptions>(
+            configuration.GetSection("BffRole"));
 
         services.AddTransient<GlobalExceptionMiddleware>();
         services.AddTransient<RequestLoggingMiddleware>();
