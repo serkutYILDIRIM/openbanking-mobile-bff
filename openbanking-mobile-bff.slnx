@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="openbanking-mobile-bff/openbanking-mobile-bff.csproj" />
+  <Project Path="openbanking-mobile-bff.Tests/openbanking-mobile-bff.Tests.csproj" />
 </Solution>
