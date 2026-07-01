@@ -19,4 +19,8 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\openbanking-mobile-bff\openbanking-mobile-bff.csproj" />
+  </ItemGroup>
+
 </Project>
