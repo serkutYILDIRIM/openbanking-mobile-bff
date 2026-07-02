@@ -39,7 +39,6 @@ public sealed class DateUtilTests
     public void ToIso8601_WithNonUtcKind_AppendsLiteralZWithoutTimeZoneConversion()
     {
         var dateTime = new DateTime(2024, 1, 15, 10, 30, 45, 123, DateTimeKind.Local);
-
         var result = DateUtil.ToIso8601(dateTime);
 
         Assert.Equal("2024-01-15T10:30:45.123Z", result);
