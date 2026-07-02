@@ -74,7 +74,6 @@ public sealed class DateUtilTests
     public void ToIso8601_ThenParseIso8601_RoundTripsUtcValue()
     {
         var value = new DateTime(2024, 1, 15, 10, 30, 45, 123, DateTimeKind.Utc);
-
         var result = DateUtil.ParseIso8601(DateUtil.ToIso8601(value));
 
         Assert.Equal(value, result);
