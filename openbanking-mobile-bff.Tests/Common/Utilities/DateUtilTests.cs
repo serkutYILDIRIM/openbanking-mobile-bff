@@ -20,7 +20,6 @@ public sealed class DateUtilTests
         string expected)
     {
         var dateTime = new DateTime(year, month, day, hour, minute, second, millisecond, DateTimeKind.Utc);
-
         var result = DateUtil.ToIso8601(dateTime);
 
         Assert.Equal(expected, result);
