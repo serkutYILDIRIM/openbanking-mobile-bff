@@ -20,7 +20,6 @@ public sealed class DateUtilTests
         string expected)
     {
         var dateTime = new DateTime(year, month, day, hour, minute, second, millisecond, DateTimeKind.Utc);
-
         var result = DateUtil.ToIso8601(dateTime);
 
         Assert.Equal(expected, result);
@@ -30,9 +29,8 @@ public sealed class DateUtilTests
     public void ToIso8601_WithSubMillisecondTicks_TruncatesToMilliseconds()
     {
         var dateTime = new DateTime(2024, 1, 15, 10, 30, 45, 123, DateTimeKind.Utc).AddTicks(9000);
-
         var result = DateUtil.ToIso8601(dateTime);
-
+        
         Assert.Equal("2024-01-15T10:30:45.123Z", result);
     }
 
@@ -40,7 +38,6 @@ public sealed class DateUtilTests
     public void ToIso8601_WithNonUtcKind_AppendsLiteralZWithoutTimeZoneConversion()
     {
         var dateTime = new DateTime(2024, 1, 15, 10, 30, 45, 123, DateTimeKind.Local);
-
         var result = DateUtil.ToIso8601(dateTime);
 
         Assert.Equal("2024-01-15T10:30:45.123Z", result);
@@ -77,7 +74,6 @@ public sealed class DateUtilTests
     public void ToIso8601_ThenParseIso8601_RoundTripsUtcValue()
     {
         var value = new DateTime(2024, 1, 15, 10, 30, 45, 123, DateTimeKind.Utc);
-
         var result = DateUtil.ParseIso8601(DateUtil.ToIso8601(value));
 
         Assert.Equal(value, result);
