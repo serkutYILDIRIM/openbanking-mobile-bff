@@ -55,6 +55,7 @@ public sealed class HttpHeaderUtilTests
     {
         var source = new DefaultHttpContext();
         source.Request.Headers[OhvpsConstants.RequestIdHeader] = "req-123";
+        
         var target = new HttpRequestMessage();
 
         HttpHeaderUtil.PropagateHeaders(target, source);
