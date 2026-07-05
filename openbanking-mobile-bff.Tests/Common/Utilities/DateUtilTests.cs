@@ -10,6 +10,7 @@ public sealed class DateUtilTests
     [InlineData(2024, 3, 5, 4, 7, 9, 8, "2024-03-05T04:07:09.008Z")]
     [InlineData(1999, 12, 31, 23, 59, 59, 999, "1999-12-31T23:59:59.999Z")]
     public void ToIso8601_WithUtcDateTime_ReturnsZeroPaddedIso8601String(
+        
         int year,
         int month,
         int day,
@@ -75,7 +76,6 @@ public sealed class DateUtilTests
     {
         var value = new DateTime(2024, 1, 15, 10, 30, 45, 123, DateTimeKind.Utc);
         var result = DateUtil.ParseIso8601(DateUtil.ToIso8601(value));
-
         Assert.Equal(value, result);
         Assert.Equal(DateTimeKind.Utc, result.Kind);
     }

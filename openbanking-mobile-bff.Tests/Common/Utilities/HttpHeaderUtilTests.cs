@@ -33,11 +33,13 @@ public sealed class HttpHeaderUtilTests
     public void PropagateHeaders_WithAllOhvpsHeadersPresent_CopiesEachToTargetRequest()
     {
         var source = new DefaultHttpContext();
+        
         source.Request.Headers[OhvpsConstants.RequestIdHeader] = "req-123";
         source.Request.Headers[OhvpsConstants.AspspCodeHeader] = "aspsp-001";
         source.Request.Headers[OhvpsConstants.TppCodeHeader] = "tpp-001";
         source.Request.Headers[OhvpsConstants.JwsSignatureHeader] = "jws-signature";
         source.Request.Headers[OhvpsConstants.IdempotencyKeyHeader] = "idem-key";
+        
         var target = new HttpRequestMessage();
 
         HttpHeaderUtil.PropagateHeaders(target, source);
@@ -54,6 +56,7 @@ public sealed class HttpHeaderUtilTests
     {
         var source = new DefaultHttpContext();
         source.Request.Headers[OhvpsConstants.RequestIdHeader] = "req-123";
+        
         var target = new HttpRequestMessage();
 
         HttpHeaderUtil.PropagateHeaders(target, source);
@@ -69,7 +72,9 @@ public sealed class HttpHeaderUtilTests
     public void PropagateHeaders_WithNoOhvpsHeaders_LeavesTargetHeadersEmpty()
     {
         var source = new DefaultHttpContext();
+        
         source.Request.Headers["X-Unrelated-Header"] = "value";
+        
         var target = new HttpRequestMessage();
 
         HttpHeaderUtil.PropagateHeaders(target, source);
