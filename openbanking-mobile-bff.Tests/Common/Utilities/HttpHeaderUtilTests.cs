@@ -72,6 +72,7 @@ public sealed class HttpHeaderUtilTests
     public void PropagateHeaders_WithNoOhvpsHeaders_LeavesTargetHeadersEmpty()
     {
         var source = new DefaultHttpContext();
+        
         source.Request.Headers["X-Unrelated-Header"] = "value";
         
         var target = new HttpRequestMessage();
