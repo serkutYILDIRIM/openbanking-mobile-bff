@@ -10,6 +10,7 @@ public sealed class DateUtilTests
     [InlineData(2024, 3, 5, 4, 7, 9, 8, "2024-03-05T04:07:09.008Z")]
     [InlineData(1999, 12, 31, 23, 59, 59, 999, "1999-12-31T23:59:59.999Z")]
     public void ToIso8601_WithUtcDateTime_ReturnsZeroPaddedIso8601String(
+        
         int year,
         int month,
         int day,
