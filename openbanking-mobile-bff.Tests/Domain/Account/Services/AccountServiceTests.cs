@@ -65,6 +65,7 @@ public sealed class AccountServiceTests
             BranchCode = "0002",
             AccountStatus = "passive"
         };
+        
         var client = new FakeHhsMicroserviceClient { AccountResult = dto };
         var service = new AccountService(client);
 
