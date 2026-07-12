@@ -86,6 +86,7 @@ public sealed class AccountServiceTests
     public async Task GetBalanceAsync_MapsDtoIntoBalanceResponse()
     {
         var balanceDateTime = new DateTime(2024, 1, 15, 10, 30, 45, DateTimeKind.Utc);
+        
         var dto = new HhsBalanceDto
         {
             AccountRef = "acc-ref-1",
@@ -94,6 +95,7 @@ public sealed class AccountServiceTests
             BalanceDateTime = balanceDateTime,
             BalanceType = "available"
         };
+        
         var client = new FakeHhsMicroserviceClient { BalanceResult = dto };
         var service = new AccountService(client);
 
