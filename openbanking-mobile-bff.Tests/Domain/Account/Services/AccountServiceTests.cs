@@ -113,6 +113,7 @@ public sealed class AccountServiceTests
     public async Task GetTransactionsAsync_MapsDtoIntoSingleTransactionItem()
     {
         var transactionDate = new DateTime(2024, 2, 20, 8, 15, 0, DateTimeKind.Utc);
+        
         var dto = new HhsTransactionDto
         {
             TransactionId = "txn-1",
@@ -122,6 +123,7 @@ public sealed class AccountServiceTests
             Description = "Grocery store",
             CreditorDebitIndicator = "DBIT"
         };
+        
         var client = new FakeHhsMicroserviceClient { TransactionResult = dto };
         var service = new AccountService(client);
 
