@@ -26,6 +26,7 @@ public sealed class AccountServiceTests
         var result = await service.GetAccountsAsync("req-123", "aspsp-001", "tpp-001");
 
         Assert.Equal(1, result.TotalCount);
+        
         var account = Assert.Single(result.Accounts);
         Assert.Equal("acc-ref-1", account.AccountRef);
         Assert.Equal("1234567890", account.AccountNumber);
