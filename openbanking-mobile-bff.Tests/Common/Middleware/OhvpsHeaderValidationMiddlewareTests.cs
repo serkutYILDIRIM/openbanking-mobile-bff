@@ -39,6 +39,7 @@ public sealed class OhvpsHeaderValidationMiddlewareTests
         context.Request.Headers[OhvpsConstants.RequestIdHeader] = "req-123";
         context.Request.Headers[OhvpsConstants.AspspCodeHeader] = "aspsp-001";
         context.Request.Headers[OhvpsConstants.TppCodeHeader] = "tpp-001";
+        
         var nextCalled = false;
 
         await new OhvpsHeaderValidationMiddleware().InvokeAsync(context, _ =>
@@ -63,6 +64,7 @@ public sealed class OhvpsHeaderValidationMiddlewareTests
         context.Request.Headers[OhvpsConstants.AspspCodeHeader] = "aspsp-001";
         context.Request.Headers[OhvpsConstants.TppCodeHeader] = "tpp-001";
         context.Request.Headers.Remove(missingHeader);
+        
         var nextCalled = false;
 
         await new OhvpsHeaderValidationMiddleware().InvokeAsync(context, _ =>
@@ -87,6 +89,7 @@ public sealed class OhvpsHeaderValidationMiddlewareTests
         await new OhvpsHeaderValidationMiddleware().InvokeAsync(context, _ => Task.CompletedTask);
 
         context.Response.Body.Seek(0, SeekOrigin.Begin);
+        
         var body = await new StreamReader(context.Response.Body).ReadToEndAsync();
         var error = JsonSerializer.Deserialize<ErrorResponse>(body, JsonOptions);
 

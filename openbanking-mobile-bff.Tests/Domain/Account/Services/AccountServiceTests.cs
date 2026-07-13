@@ -26,6 +26,7 @@ public sealed class AccountServiceTests
         var result = await service.GetAccountsAsync("req-123", "aspsp-001", "tpp-001");
 
         Assert.Equal(1, result.TotalCount);
+        
         var account = Assert.Single(result.Accounts);
         Assert.Equal("acc-ref-1", account.AccountRef);
         Assert.Equal("1234567890", account.AccountNumber);
@@ -65,6 +66,7 @@ public sealed class AccountServiceTests
             BranchCode = "0002",
             AccountStatus = "passive"
         };
+        
         var client = new FakeHhsMicroserviceClient { AccountResult = dto };
         var service = new AccountService(client);
 
@@ -84,6 +86,7 @@ public sealed class AccountServiceTests
     public async Task GetBalanceAsync_MapsDtoIntoBalanceResponse()
     {
         var balanceDateTime = new DateTime(2024, 1, 15, 10, 30, 45, DateTimeKind.Utc);
+        
         var dto = new HhsBalanceDto
         {
             AccountRef = "acc-ref-1",
@@ -92,6 +95,7 @@ public sealed class AccountServiceTests
             BalanceDateTime = balanceDateTime,
             BalanceType = "available"
         };
+        
         var client = new FakeHhsMicroserviceClient { BalanceResult = dto };
         var service = new AccountService(client);
 
@@ -109,6 +113,7 @@ public sealed class AccountServiceTests
     public async Task GetTransactionsAsync_MapsDtoIntoSingleTransactionItem()
     {
         var transactionDate = new DateTime(2024, 2, 20, 8, 15, 0, DateTimeKind.Utc);
+        
         var dto = new HhsTransactionDto
         {
             TransactionId = "txn-1",
@@ -118,6 +123,7 @@ public sealed class AccountServiceTests
             Description = "Grocery store",
             CreditorDebitIndicator = "DBIT"
         };
+        
         var client = new FakeHhsMicroserviceClient { TransactionResult = dto };
         var service = new AccountService(client);
 
