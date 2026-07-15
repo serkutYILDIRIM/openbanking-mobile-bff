@@ -34,6 +34,7 @@ public sealed class GlobalExceptionMiddlewareTests
     public async Task InvokeAsync_WithOhvpsException_WritesCustomErrorPayload()
     {
         var context = new DefaultHttpContext();
+        
         context.TraceIdentifier = "trace-1";
         
         context.Request.Path = "/api/payments";
