@@ -35,6 +35,7 @@ public sealed class GlobalExceptionMiddlewareTests
     {
         var context = new DefaultHttpContext();
         context.TraceIdentifier = "trace-1";
+        
         context.Request.Path = "/api/payments";
         context.Response.Body = new MemoryStream();
         var before = DateTime.UtcNow;
