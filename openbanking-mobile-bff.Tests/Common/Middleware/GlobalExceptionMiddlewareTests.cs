@@ -56,6 +56,7 @@ public sealed class GlobalExceptionMiddlewareTests
         Assert.NotNull(error);
         Assert.Equal("trace-1", error!.Id);
         Assert.Equal("/api/payments", error.Path);
+        
         Assert.Equal(HttpStatusCode.BadRequest, error.HttpCode);
         Assert.Equal("TR.OHVPS.Validation.InvalidInput", error.ErrorCode);
         Assert.Equal("Input is invalid.", error.ErrorMessage);
