@@ -17,6 +17,7 @@ public sealed class GlobalExceptionMiddlewareTests
     public async Task InvokeAsync_WithNoException_CallsNext()
     {
         var context = new DefaultHttpContext();
+        
         var nextCalled = false;
 
         await new GlobalExceptionMiddleware().InvokeAsync(context, _ =>
@@ -33,8 +34,11 @@ public sealed class GlobalExceptionMiddlewareTests
     public async Task InvokeAsync_WithOhvpsException_WritesCustomErrorPayload()
     {
         var context = new DefaultHttpContext();
+        
         context.TraceIdentifier = "trace-1";
+        
         context.Request.Path = "/api/payments";
+        
         context.Response.Body = new MemoryStream();
         var before = DateTime.UtcNow;
 
@@ -52,6 +56,7 @@ public sealed class GlobalExceptionMiddlewareTests
         Assert.NotNull(error);
         Assert.Equal("trace-1", error!.Id);
         Assert.Equal("/api/payments", error.Path);
+        
         Assert.Equal(HttpStatusCode.BadRequest, error.HttpCode);
         Assert.Equal("TR.OHVPS.Validation.InvalidInput", error.ErrorCode);
         Assert.Equal("Input is invalid.", error.ErrorMessage);
