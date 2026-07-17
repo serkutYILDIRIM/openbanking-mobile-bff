@@ -16,8 +16,7 @@ public sealed class GlobalExceptionMiddlewareTests
     [Fact]
     public async Task InvokeAsync_WithNoException_CallsNext()
     {
-        var context = new DefaultHttpContext();
-        
+        var context = new DefaultHttpContext();        
         var nextCalled = false;
 
         await new GlobalExceptionMiddleware().InvokeAsync(context, _ =>
