@@ -17,7 +17,6 @@ public sealed class DownstreamServiceExceptionTests
     public void Constructor_WithStatusCode_PropagatesStatusCodeToBase()
     {
         var exception = new DownstreamServiceException("yos-service", "Downstream call failed", HttpStatusCode.ServiceUnavailable);
-
         Assert.Equal(HttpStatusCode.ServiceUnavailable, exception.StatusCode);
     }
 
