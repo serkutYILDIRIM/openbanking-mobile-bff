@@ -68,6 +68,7 @@ public sealed class GlobalExceptionMiddlewareTests
         context.TraceIdentifier = "trace-2";
         context.Request.Path = "/api/cards";
         context.Response.Body = new MemoryStream();
+        
         var before = DateTime.UtcNow;
 
         await new GlobalExceptionMiddleware().InvokeAsync(
