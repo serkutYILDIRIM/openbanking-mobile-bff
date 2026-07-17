@@ -23,7 +23,6 @@ public sealed class DownstreamServiceExceptionTests
     public void Constructor_Always_SetsDownstreamErrorCode()
     {
         var exception = new DownstreamServiceException("hhs-service", "Downstream call failed", HttpStatusCode.BadGateway);
-
         Assert.Equal("TR.OHVPS.Connection.DownstreamError", exception.ErrorCode);
     }
 
