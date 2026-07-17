@@ -16,8 +16,7 @@ public sealed class GlobalExceptionMiddlewareTests
     [Fact]
     public async Task InvokeAsync_WithNoException_CallsNext()
     {
-        var context = new DefaultHttpContext();
-        
+        var context = new DefaultHttpContext();        
         var nextCalled = false;
 
         await new GlobalExceptionMiddleware().InvokeAsync(context, _ =>
@@ -36,7 +35,6 @@ public sealed class GlobalExceptionMiddlewareTests
         var context = new DefaultHttpContext();
         
         context.TraceIdentifier = "trace-1";
-        
         context.Request.Path = "/api/payments";
         
         context.Response.Body = new MemoryStream();
@@ -70,6 +68,7 @@ public sealed class GlobalExceptionMiddlewareTests
         context.TraceIdentifier = "trace-2";
         context.Request.Path = "/api/cards";
         context.Response.Body = new MemoryStream();
+        
         var before = DateTime.UtcNow;
 
         await new GlobalExceptionMiddleware().InvokeAsync(

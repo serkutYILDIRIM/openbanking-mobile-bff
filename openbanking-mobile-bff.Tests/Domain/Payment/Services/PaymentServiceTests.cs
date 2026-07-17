@@ -52,6 +52,7 @@ public sealed class PaymentServiceTests
         Assert.Equal("2222", hhsClient.CapturedPaymentRequest.ReceiverAccountNumber);
 
         Assert.NotNull(result.PaymentOrder);
+        
         Assert.Equal("order-1", result.PaymentOrder!.PaymentOrderId);
         Assert.Equal("completed", result.PaymentOrder.PaymentStatus);
         Assert.Equal(new DateTime(2024, 3, 1, 12, 0, 0, DateTimeKind.Utc), result.PaymentOrder.PaymentOrderTime);
@@ -96,6 +97,7 @@ public sealed class PaymentServiceTests
             }
         };
         var hhsClient = new FakeHhsMicroserviceClient();
+        
         var service = new PaymentService(yosClient, hhsClient, CreateRoleOptions("YOS"));
 
         var result = await service.CreatePaymentOrderAsync(request, "req-123", "aspsp-001", "tpp-001");

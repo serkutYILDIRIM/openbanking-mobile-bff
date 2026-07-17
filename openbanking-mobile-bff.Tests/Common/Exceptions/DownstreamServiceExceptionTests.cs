@@ -9,7 +9,6 @@ public sealed class DownstreamServiceExceptionTests
     public void Constructor_WithServiceNameMessageAndStatusCode_SetsServiceName()
     {
         var exception = new DownstreamServiceException("hhs-service", "Downstream call failed", HttpStatusCode.BadGateway);
-
         Assert.Equal("hhs-service", exception.ServiceName);
     }
 
@@ -17,7 +16,6 @@ public sealed class DownstreamServiceExceptionTests
     public void Constructor_WithStatusCode_PropagatesStatusCodeToBase()
     {
         var exception = new DownstreamServiceException("yos-service", "Downstream call failed", HttpStatusCode.ServiceUnavailable);
-
         Assert.Equal(HttpStatusCode.ServiceUnavailable, exception.StatusCode);
     }
 
@@ -25,7 +23,6 @@ public sealed class DownstreamServiceExceptionTests
     public void Constructor_Always_SetsDownstreamErrorCode()
     {
         var exception = new DownstreamServiceException("hhs-service", "Downstream call failed", HttpStatusCode.BadGateway);
-
         Assert.Equal("TR.OHVPS.Connection.DownstreamError", exception.ErrorCode);
     }
 
