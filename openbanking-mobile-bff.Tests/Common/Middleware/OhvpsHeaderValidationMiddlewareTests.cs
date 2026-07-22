@@ -60,6 +60,7 @@ public sealed class OhvpsHeaderValidationMiddlewareTests
     public async Task InvokeAsync_WithApiPathAndMissingRequiredHeader_ReturnsBadRequestAndDoesNotCallNext(string missingHeader)
     {
         var context = new DefaultHttpContext();
+        
         context.Request.Path = "/api/accounts";
         context.Request.Headers[OhvpsConstants.RequestIdHeader] = "req-123";
         context.Request.Headers[OhvpsConstants.AspspCodeHeader] = "aspsp-001";
