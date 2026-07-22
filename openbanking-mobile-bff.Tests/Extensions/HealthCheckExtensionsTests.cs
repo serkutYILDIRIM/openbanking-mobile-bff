@@ -11,7 +11,6 @@ public sealed class HealthCheckExtensionsTests
     public void AddBffHealthChecks_RegistersSelfHealthCheck()
     {
         var services = new ServiceCollection();
-
         services.AddBffHealthChecks();
 
         using var provider = services.BuildServiceProvider();
