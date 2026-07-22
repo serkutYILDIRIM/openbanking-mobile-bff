@@ -40,7 +40,6 @@ public sealed class OhvpsHeaderValidationMiddlewareTests
         context.Request.Headers[OhvpsConstants.RequestIdHeader] = "req-123";
         context.Request.Headers[OhvpsConstants.AspspCodeHeader] = "aspsp-001";
         context.Request.Headers[OhvpsConstants.TppCodeHeader] = "tpp-001";
-        
         var nextCalled = false;
 
         await new OhvpsHeaderValidationMiddleware().InvokeAsync(context, _ =>
