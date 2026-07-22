@@ -14,7 +14,7 @@ public sealed class HealthCheckExtensionsTests
 
         services.AddBffHealthChecks();
 
-      using var provider = services.BuildServiceProvider();
+        using var provider = services.BuildServiceProvider();
         var options = provider.GetRequiredService<IOptions<HealthCheckServiceOptions>>().Value;
 
         var registration = Assert.Single(options.Registrations);
