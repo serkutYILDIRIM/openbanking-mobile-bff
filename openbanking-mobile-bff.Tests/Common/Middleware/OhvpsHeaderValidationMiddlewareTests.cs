@@ -19,6 +19,7 @@ public sealed class OhvpsHeaderValidationMiddlewareTests
     {
         var context = new DefaultHttpContext();
         context.Request.Path = "/health";
+        
         var nextCalled = false;
 
         await new OhvpsHeaderValidationMiddleware().InvokeAsync(context, _ =>
