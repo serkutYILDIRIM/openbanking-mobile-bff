@@ -51,6 +51,7 @@ public sealed class UnauthorizedExceptionTests
 
         Assert.Equal(message, exception.ErrorMessage);
         Assert.Equal(message, exception.Message);
+        
         Assert.Equal(HttpStatusCode.Unauthorized, exception.StatusCode);
         Assert.Equal("TR.OHVPS.Connection.Unauthorized", exception.ErrorCode);
     }
