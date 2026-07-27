@@ -9,6 +9,7 @@ public sealed class UnauthorizedExceptionTests
     public void Constructor_WithMessage_SetsStatusCodeToUnauthorized()
     {
         var exception = new UnauthorizedException("Access denied.");
+        
         Assert.Equal(HttpStatusCode.Unauthorized, exception.StatusCode);
     }
 
