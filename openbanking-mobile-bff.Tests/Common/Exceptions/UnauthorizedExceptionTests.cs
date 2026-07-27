@@ -36,7 +36,6 @@ public sealed class UnauthorizedExceptionTests
         var exception = new UnauthorizedException("Access denied.");
 
         Assert.IsAssignableFrom<OhvpsException>(exception);
-        
         Assert.IsAssignableFrom<Exception>(exception);
     }
 
