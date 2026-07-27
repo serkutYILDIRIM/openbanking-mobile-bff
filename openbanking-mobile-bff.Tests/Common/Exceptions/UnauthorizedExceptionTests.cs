@@ -16,6 +16,7 @@ public sealed class UnauthorizedExceptionTests
     public void Constructor_Always_SetsUnauthorizedErrorCode()
     {
         var exception = new UnauthorizedException("Access denied.");
+        
         Assert.Equal("TR.OHVPS.Connection.Unauthorized", exception.ErrorCode);
     }
 
@@ -25,6 +26,7 @@ public sealed class UnauthorizedExceptionTests
         var exception = new UnauthorizedException("Token has expired.");
 
         Assert.Equal("Token has expired.", exception.ErrorMessage);
+        
         Assert.Equal("Token has expired.", exception.Message);
     }
 
@@ -47,6 +49,7 @@ public sealed class UnauthorizedExceptionTests
 
         Assert.Equal(message, exception.ErrorMessage);
         Assert.Equal(message, exception.Message);
+        
         Assert.Equal(HttpStatusCode.Unauthorized, exception.StatusCode);
         Assert.Equal("TR.OHVPS.Connection.Unauthorized", exception.ErrorCode);
     }
