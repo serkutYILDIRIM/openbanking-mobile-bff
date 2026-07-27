@@ -17,6 +17,7 @@ public sealed class UnauthorizedExceptionTests
     public void Constructor_Always_SetsUnauthorizedErrorCode()
     {
         var exception = new UnauthorizedException("Access denied.");
+        
         Assert.Equal("TR.OHVPS.Connection.Unauthorized", exception.ErrorCode);
     }
 
