@@ -25,9 +25,7 @@ public sealed class UnauthorizedExceptionTests
     public void Constructor_WithMessage_SetsErrorMessageAndExceptionMessage()
     {
         var exception = new UnauthorizedException("Token has expired.");
-
         Assert.Equal("Token has expired.", exception.ErrorMessage);
-        
         Assert.Equal("Token has expired.", exception.Message);
     }
 
