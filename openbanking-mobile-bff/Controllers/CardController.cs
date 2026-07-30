@@ -34,6 +34,7 @@ public sealed class CardController : ControllerBase
         [FromHeader(Name = "X-TPP-Code")] string tppCode)
     {
         var result = await _cardService.GetCardByRefAsync(cardRef, requestId, aspspCode, tppCode);
+        
         return Ok(result);
     }
 
