@@ -58,6 +58,7 @@ public sealed class AccountController : ControllerBase
         [FromHeader(Name = "X-TPP-Code")] string tppCode)
     {
         var result = await _accountService.GetTransactionsAsync(accountRef, requestId, aspspCode, tppCode);
+        
         return Ok(result);
     }
 }
