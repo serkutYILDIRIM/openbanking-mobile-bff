@@ -22,6 +22,7 @@ public sealed class AccountController : ControllerBase
         [FromHeader(Name = "X-TPP-Code")] string tppCode)
     {
         var result = await _accountService.GetAccountsAsync(requestId, aspspCode, tppCode);
+        
         return Ok(result);
     }
 
@@ -33,6 +34,7 @@ public sealed class AccountController : ControllerBase
         [FromHeader(Name = "X-TPP-Code")] string tppCode)
     {
         var result = await _accountService.GetAccountByRefAsync(accountRef, requestId, aspspCode, tppCode);
+        
         return Ok(result);
     }
 
@@ -44,6 +46,7 @@ public sealed class AccountController : ControllerBase
         [FromHeader(Name = "X-TPP-Code")] string tppCode)
     {
         var result = await _accountService.GetBalanceAsync(accountRef, requestId, aspspCode, tppCode);
+        
         return Ok(result);
     }
 
@@ -55,6 +58,7 @@ public sealed class AccountController : ControllerBase
         [FromHeader(Name = "X-TPP-Code")] string tppCode)
     {
         var result = await _accountService.GetTransactionsAsync(accountRef, requestId, aspspCode, tppCode);
+        
         return Ok(result);
     }
 }
