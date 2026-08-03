@@ -16,6 +16,7 @@ public sealed class RateLimitExtensionsTests
     public void AddBffRateLimiting_WithConfiguredOptions_AppliesConfiguredPermitLimitAndRejectionStatusCode()
     {
         var services = new ServiceCollection();
+        
         var configuration = new ConfigurationBuilder()
             .AddInMemoryCollection(new Dictionary<string, string?>
             {
@@ -90,6 +91,7 @@ public sealed class RateLimitExtensionsTests
         Assert.NotNull(partitioner);
 
         var partition = partitioner!.DynamicInvoke(new DefaultHttpContext());
+        
         Assert.NotNull(partition);
 
         var factory = partition!.GetType()
