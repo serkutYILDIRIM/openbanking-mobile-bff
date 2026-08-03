@@ -16,6 +16,7 @@ public sealed class RateLimitExtensionsTests
     public void AddBffRateLimiting_WithConfiguredOptions_AppliesConfiguredPermitLimitAndRejectionStatusCode()
     {
         var services = new ServiceCollection();
+        
         var configuration = new ConfigurationBuilder()
             .AddInMemoryCollection(new Dictionary<string, string?>
             {
