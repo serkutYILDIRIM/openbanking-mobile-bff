@@ -31,14 +31,14 @@ public sealed class RateLimitExtensionsTests
         var options = provider.GetRequiredService<IOptions<RateLimiterOptions>>().Value;
         using var limiter = CreateSlidingLimiter(options);
 
-        using var firstLease = limiter.Acquire(1);
-        using var secondLease = limiter.Acquire(1);
-        using var thirdLease = limiter.Acquire(1);
+        using var firstLease = limiter.AttemptAcquire(1);
+        using var secondLease = limiter.AttemptAcquire(1);
+        using var thirdLease = limiter.AttemptAcquire(1);
 
         Assert.Equal(StatusCodes.Status429TooManyRequests, options.RejectionStatusCode);
-        Assert.True(firstLease.IsAcquired);
-        Assert.True(secondLease.IsAcquired);
-        Assert.False(thirdLease.IsAcquired);
+        Assert.True(firstLease.IsAcquired is true);
+        Assert.True(secondLease.IsAcquired is true);
+        Assert.False(thirdLease.IsAcquired is true);
     }
 
     [Fact]
@@ -55,13 +55,13 @@ public sealed class RateLimitExtensionsTests
 
         for (var i = 0; i < 100; i++)
         {
-            using var lease = limiter.Acquire(1);
-            Assert.True(lease.IsAcquired);
+            using var lease = limiter.AttemptAcquire(1);
+            Assert.True(lease.IsAcquired is true);
         }
 
-        using var overflowLease = limiter.Acquire(1);
+        using var overflowLease = limiter.AttemptAcquire(1);
 
-        Assert.False(overflowLease.IsAcquired);
+        Assert.False(overflowLease.IsAcquired is true);
     }
 
     private static RateLimiter CreateSlidingLimiter(RateLimiterOptions options)
@@ -105,4 +105,3 @@ public sealed class RateLimitExtensionsTests
         return Assert.IsType<SlidingWindowRateLimiter>(limiter);
     }
 }
-
