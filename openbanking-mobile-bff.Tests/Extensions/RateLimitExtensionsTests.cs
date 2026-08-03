@@ -90,6 +90,7 @@ public sealed class RateLimitExtensionsTests
         Assert.NotNull(partitioner);
 
         var partition = partitioner!.DynamicInvoke(new DefaultHttpContext());
+        
         Assert.NotNull(partition);
 
         var factory = partition!.GetType()
