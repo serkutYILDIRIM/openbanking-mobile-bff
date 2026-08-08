@@ -24,6 +24,7 @@ public sealed class IdempotencyFilterTests
         await new IdempotencyFilter().OnActionExecutionAsync(context, () =>
         {
             nextCalled = true;
+            
             return Task.FromResult(new ActionExecutedContext(
                 new ActionContext(httpContext, new RouteData(), new ActionDescriptor()),
                 new List<IFilterMetadata>(),
