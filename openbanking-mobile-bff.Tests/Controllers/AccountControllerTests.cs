@@ -26,7 +26,22 @@ public sealed class AccountControllerTests
 		Assert.Equal(("req-123", "aspsp-001", "tpp-001"), service.GetAccountsArgs);
 	}
 
+	[Fact]
+	public async Task GetAccountByRef_ReturnsOkWithResponseAndPassesArgumentsToService()
+	{
+		var expected = new AccountResponse { AccountRef = "account-9" };
+		var service = new FakeAccountService { GetAccountByRefResult = expected };
+		var controller = new AccountController(service);
 
+		var actionResult = await controller.GetAccountByRef("account-9", "req-123", "aspsp-001", "tpp-001");
+
+		var ok = Assert.IsType<OkObjectResult>(actionResult.Result);
+		var value = Assert.IsType<AccountResponse>(ok.Value);
+		Assert.Same(expected, value);
+		Assert.Equal(("account-9", "req-123", "aspsp-001", "tpp-001"), service.GetAccountByRefArgs);
+	}
+
+	
 
 	private sealed class FakeAccountService : IAccountService
 	{
