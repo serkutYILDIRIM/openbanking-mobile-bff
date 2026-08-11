@@ -56,6 +56,25 @@ public sealed class AccountControllerTests
 		Assert.Equal(("account-7", "req-123", "aspsp-001", "tpp-001"), service.GetBalanceArgs);
 	}
 
+	[Fact]
+	public async Task GetTransactions_ReturnsOkWithResponseAndPassesArgumentsToService()
+	{
+		var expected = new TransactionListResponse
+		{
+			TotalCount = 1,
+			Transactions = new List<TransactionItem> { new() { TransactionId = "transaction-1" } }
+		};
+		var service = new FakeAccountService { GetTransactionsResult = expected };
+		var controller = new AccountController(service);
+
+		var actionResult = await controller.GetTransactions("account-3", "req-123", "aspsp-001", "tpp-001");
+
+		var ok = Assert.IsType<OkObjectResult>(actionResult.Result);
+		var value = Assert.IsType<TransactionListResponse>(ok.Value);
+		Assert.Same(expected, value);
+		Assert.Equal(("account-3", "req-123", "aspsp-001", "tpp-001"), service.GetTransactionsArgs);
+	}
+
 	private sealed class FakeAccountService : IAccountService
 	{
 		public AccountListResponse GetAccountsResult { get; set; } = new();
