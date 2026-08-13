@@ -15,6 +15,7 @@ public sealed class AccountControllerTests
 			TotalCount = 1,
 			Accounts = new List<AccountResponse> { new() { AccountRef = "account-1" } }
 		};
+		
 		var service = new FakeAccountService { GetAccountsResult = expected };
 		var controller = new AccountController(service);
 
