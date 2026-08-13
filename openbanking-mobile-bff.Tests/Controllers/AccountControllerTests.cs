@@ -64,7 +64,6 @@ public sealed class AccountControllerTests
 		};
 		var service = new FakeAccountService { GetTransactionsResult = expected };
 		var controller = new AccountController(service);
-
 		var actionResult = await controller.GetTransactions("account-3", "req-123", "aspsp-001", "tpp-001");
 
 		var ok = Assert.IsType<OkObjectResult>(actionResult.Result);
