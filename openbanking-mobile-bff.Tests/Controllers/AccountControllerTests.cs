@@ -15,13 +15,13 @@ public sealed class AccountControllerTests
 			TotalCount = 1,
 			Accounts = new List<AccountResponse> { new() { AccountRef = "account-1" } }
 		};
+		
 		var service = new FakeAccountService { GetAccountsResult = expected };
 		var controller = new AccountController(service);
-
 		var actionResult = await controller.GetAccounts("req-123", "aspsp-001", "tpp-001");
-
 		var ok = Assert.IsType<OkObjectResult>(actionResult.Result);
 		var value = Assert.IsType<AccountListResponse>(ok.Value);
+		
 		Assert.Same(expected, value);
 		Assert.Equal(("req-123", "aspsp-001", "tpp-001"), service.GetAccountsArgs);
 	}
@@ -32,7 +32,6 @@ public sealed class AccountControllerTests
 		var expected = new AccountResponse { AccountRef = "account-9" };
 		var service = new FakeAccountService { GetAccountByRefResult = expected };
 		var controller = new AccountController(service);
-
 		var actionResult = await controller.GetAccountByRef("account-9", "req-123", "aspsp-001", "tpp-001");
 
 		var ok = Assert.IsType<OkObjectResult>(actionResult.Result);
@@ -47,7 +46,6 @@ public sealed class AccountControllerTests
 		var expected = new BalanceResponse { AccountRef = "account-7" };
 		var service = new FakeAccountService { GetBalanceResult = expected };
 		var controller = new AccountController(service);
-
 		var actionResult = await controller.GetBalance("account-7", "req-123", "aspsp-001", "tpp-001");
 
 		var ok = Assert.IsType<OkObjectResult>(actionResult.Result);
@@ -64,9 +62,9 @@ public sealed class AccountControllerTests
 			TotalCount = 1,
 			Transactions = new List<TransactionItem> { new() { TransactionId = "transaction-1" } }
 		};
+		
 		var service = new FakeAccountService { GetTransactionsResult = expected };
 		var controller = new AccountController(service);
-
 		var actionResult = await controller.GetTransactions("account-3", "req-123", "aspsp-001", "tpp-001");
 
 		var ok = Assert.IsType<OkObjectResult>(actionResult.Result);
