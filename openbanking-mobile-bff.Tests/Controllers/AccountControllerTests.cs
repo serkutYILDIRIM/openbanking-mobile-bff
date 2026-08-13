@@ -62,6 +62,7 @@ public sealed class AccountControllerTests
 			TotalCount = 1,
 			Transactions = new List<TransactionItem> { new() { TransactionId = "transaction-1" } }
 		};
+		
 		var service = new FakeAccountService { GetTransactionsResult = expected };
 		var controller = new AccountController(service);
 		var actionResult = await controller.GetTransactions("account-3", "req-123", "aspsp-001", "tpp-001");
