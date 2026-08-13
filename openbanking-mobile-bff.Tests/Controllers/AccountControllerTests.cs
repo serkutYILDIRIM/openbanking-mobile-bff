@@ -46,7 +46,6 @@ public sealed class AccountControllerTests
 		var expected = new BalanceResponse { AccountRef = "account-7" };
 		var service = new FakeAccountService { GetBalanceResult = expected };
 		var controller = new AccountController(service);
-
 		var actionResult = await controller.GetBalance("account-7", "req-123", "aspsp-001", "tpp-001");
 
 		var ok = Assert.IsType<OkObjectResult>(actionResult.Result);
