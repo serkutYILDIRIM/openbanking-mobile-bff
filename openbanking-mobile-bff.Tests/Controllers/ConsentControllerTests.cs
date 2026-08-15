@@ -29,6 +29,7 @@ public sealed class ConsentControllerTests
         var actionResult = await controller.GetAccountConsent("consent-2", "req-123", "aspsp-001", "tpp-001");
         var ok = Assert.IsType<OkObjectResult>(actionResult.Result);
         var value = Assert.IsType<ConsentResponse>(ok.Value);
+        
         Assert.Same(expected, value);
         Assert.Equal(("consent-2", "req-123", "aspsp-001", "tpp-001"), service.GetAccountConsentArgs);
     }
