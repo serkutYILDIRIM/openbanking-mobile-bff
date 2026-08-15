@@ -39,6 +39,7 @@ public sealed class ConsentControllerTests
         var service = new FakeConsentService();
         var controller = new ConsentController(service);
         var result = await controller.DeleteAccountConsent("consent-3", "req-123", "aspsp-001", "tpp-001");
+        
         Assert.IsType<NoContentResult>(result);
         Assert.Equal(("consent-3", "req-123", "aspsp-001", "tpp-001"), service.DeleteAccountConsentArgs);
     }
