@@ -34,7 +34,6 @@ public sealed class CacheOptionsTests
             RedisConnectionString = string.Empty,
             DefaultExpirationMinutes = -1
         };
-
         Assert.Equal(string.Empty, options.RedisConnectionString);
         Assert.Equal(-1, options.DefaultExpirationMinutes);
     }
