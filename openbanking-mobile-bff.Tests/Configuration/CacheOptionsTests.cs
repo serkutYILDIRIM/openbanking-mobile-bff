@@ -23,5 +23,17 @@ public sealed class CacheOptionsTests
         Assert.Equal("localhost:6379,password=secret", options.RedisConnectionString);
         Assert.Equal(15, options.DefaultExpirationMinutes);
     }
+
+    [Fact]
+    public void Properties_WithEdgeValues_PreservesAssignedState()
+    {
+        var options = new CacheOptions
+        {
+            RedisConnectionString = string.Empty,
+            DefaultExpirationMinutes = -1
+        };
+        Assert.Equal(string.Empty, options.RedisConnectionString);
+        Assert.Equal(-1, options.DefaultExpirationMinutes);
+    }
 }
 
