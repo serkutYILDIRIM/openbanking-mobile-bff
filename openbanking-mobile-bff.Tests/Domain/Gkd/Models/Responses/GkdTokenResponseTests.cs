@@ -53,16 +53,12 @@ public sealed class GkdTokenResponseTests
 
 		Assert.True(root.TryGetProperty("erisimBelirteci", out var accessToken));
 		Assert.Equal("access-token-123", accessToken.GetString());
-
 		Assert.True(root.TryGetProperty("belirtecTur", out var tokenType));
 		Assert.Equal("Bearer", tokenType.GetString());
-
 		Assert.True(root.TryGetProperty("gecerlilikSuresi", out var expiresIn));
 		Assert.Equal(3600, expiresIn.GetInt32());
-
 		Assert.True(root.TryGetProperty("yenilemeBelireteci", out var refreshToken));
 		Assert.Equal("refresh-token-456", refreshToken.GetString());
-
 		Assert.True(root.TryGetProperty("kapsam", out var scope));
 		Assert.Equal("accounts balances", scope.GetString());
 	}
