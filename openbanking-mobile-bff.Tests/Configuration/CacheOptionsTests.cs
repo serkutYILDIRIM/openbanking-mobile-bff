@@ -8,7 +8,6 @@ public sealed class CacheOptionsTests
     public void Constructor_Always_InitializesDefaultValues()
     {
         var options = new CacheOptions();
-
         Assert.Equal(string.Empty, options.RedisConnectionString);
         Assert.Equal(0, options.DefaultExpirationMinutes);
     }
