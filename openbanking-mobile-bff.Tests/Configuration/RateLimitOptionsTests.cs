@@ -8,6 +8,7 @@ public sealed class RateLimitOptionsTests
     public void Constructor_Always_InitializesDefaultValues()
     {
         var options = new RateLimitOptions();
+        
         Assert.Equal(0, options.PermitLimit);
         Assert.Equal(0, options.WindowSeconds);
         Assert.Equal(0, options.QueueLimit);
