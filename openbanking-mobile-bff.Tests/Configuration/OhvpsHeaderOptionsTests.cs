@@ -8,7 +8,6 @@ public sealed class OhvpsHeaderOptionsTests
     public void Constructor_Always_InitializesDefaultValues()
     {
         var options = new OhvpsHeaderOptions();
-
         Assert.Equal("X-Request-ID", options.RequestIdHeader);
         Assert.Equal("X-ASPSP-Code", options.AspspCodeHeader);
         Assert.Equal("X-TPP-Code", options.TppCodeHeader);
