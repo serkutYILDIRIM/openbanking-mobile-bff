@@ -33,6 +33,7 @@ public sealed class HhsApiPathOptionsTests
             BalancePath = "/accounts/{accountRef}/balance",
             TransactionsPath = "/accounts/{accountRef}/transactions",
             CardsPath = "/cards",
+            
             CardByRefPath = "/cards/{cardRef}",
             CardDetailPath = "/cards/{cardRef}/details",
             CardTransactionsPath = "/cards/{cardRef}/transactions",
