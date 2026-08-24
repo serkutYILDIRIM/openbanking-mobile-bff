@@ -90,6 +90,7 @@ public sealed class HhsApiPathOptionsTests
         Assert.Equal(transactionsPath, options.TransactionsPath);
         Assert.Equal(cardsPath, options.CardsPath);
         Assert.Equal(cardByRefPath, options.CardByRefPath);
+        
         Assert.Equal(cardDetailPath, options.CardDetailPath);
         Assert.Equal(cardTransactionsPath, options.CardTransactionsPath);
         Assert.Equal(paymentsPath, options.PaymentsPath);
