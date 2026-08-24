@@ -14,6 +14,7 @@ public sealed class HhsApiPathOptionsTests
         Assert.Equal(string.Empty, options.BalancePath);
         Assert.Equal(string.Empty, options.TransactionsPath);
         Assert.Equal(string.Empty, options.CardsPath);
+        
         Assert.Equal(string.Empty, options.CardByRefPath);
         Assert.Equal(string.Empty, options.CardDetailPath);
         Assert.Equal(string.Empty, options.CardTransactionsPath);
