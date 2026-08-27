@@ -43,7 +43,6 @@ public sealed class JwtValidationOptionsTests
             JwksUri = jwksUri,
             ValidateLifetime = validateLifetime
         };
-
         Assert.Equal(issuer, options.Issuer);
         Assert.Equal(audience, options.Audience);
         Assert.Equal(jwksUri, options.JwksUri);
