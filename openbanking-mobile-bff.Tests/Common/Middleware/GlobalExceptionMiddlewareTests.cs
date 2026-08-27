@@ -44,6 +44,7 @@ public sealed class GlobalExceptionMiddlewareTests
             _ => throw new OhvpsException(HttpStatusCode.BadRequest, "TR.OHVPS.Validation.InvalidInput", "Input is invalid."));
 
         var after = DateTime.UtcNow;
+        
         context.Response.Body.Seek(0, SeekOrigin.Begin);
         var body = await new StreamReader(context.Response.Body).ReadToEndAsync();
         var error = JsonSerializer.Deserialize<ErrorResponse>(body, JsonOptions);
