@@ -24,7 +24,6 @@ public sealed class JwtValidationOptionsTests
             JwksUri = "https://issuer.example.com/.well-known/jwks.json",
             ValidateLifetime = true
         };
-
         Assert.Equal("https://issuer.example.com", options.Issuer);
         Assert.Equal("mobile-bff-client", options.Audience);
         Assert.Equal("https://issuer.example.com/.well-known/jwks.json", options.JwksUri);
