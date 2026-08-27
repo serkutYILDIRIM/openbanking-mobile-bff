@@ -8,7 +8,6 @@ public sealed class JwtValidationOptionsTests
     public void Constructor_Always_InitializesDefaultValues()
     {
         var options = new JwtValidationOptions();
-
         Assert.Equal(string.Empty, options.Issuer);
         Assert.Equal(string.Empty, options.Audience);
         Assert.Equal(string.Empty, options.JwksUri);
