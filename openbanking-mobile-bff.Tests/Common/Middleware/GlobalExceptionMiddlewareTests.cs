@@ -18,7 +18,6 @@ public sealed class GlobalExceptionMiddlewareTests
     {
         var context = new DefaultHttpContext();        
         var nextCalled = false;
-
         await new GlobalExceptionMiddleware().InvokeAsync(context, _ =>
         {
             nextCalled = true;
