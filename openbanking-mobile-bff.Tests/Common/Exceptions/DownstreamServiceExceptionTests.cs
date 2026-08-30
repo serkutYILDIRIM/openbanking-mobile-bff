@@ -9,6 +9,7 @@ public sealed class DownstreamServiceExceptionTests
     public void Constructor_WithServiceNameMessageAndStatusCode_SetsServiceName()
     {
         var exception = new DownstreamServiceException("hhs-service", "Downstream call failed", HttpStatusCode.BadGateway);
+        
         Assert.Equal("hhs-service", exception.ServiceName);
     }
 
