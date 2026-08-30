@@ -24,7 +24,6 @@ public sealed class ErrorResponseTests
     public void Properties_WithProvidedValues_PreservesAssignedState()
     {
         var timestamp = new DateTime(2026, 8, 4, 9, 30, 0, DateTimeKind.Utc);
-        
         var fieldErrors = new List<FieldError>
         {
             new() { Field = "amount", Message = "Amount is required." },
