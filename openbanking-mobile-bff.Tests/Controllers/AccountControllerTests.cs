@@ -33,9 +33,9 @@ public sealed class AccountControllerTests
 		var service = new FakeAccountService { GetAccountByRefResult = expected };
 		var controller = new AccountController(service);
 		var actionResult = await controller.GetAccountByRef("account-9", "req-123", "aspsp-001", "tpp-001");
-
 		var ok = Assert.IsType<OkObjectResult>(actionResult.Result);
 		var value = Assert.IsType<AccountResponse>(ok.Value);
+		
 		Assert.Same(expected, value);
 		Assert.Equal(("account-9", "req-123", "aspsp-001", "tpp-001"), service.GetAccountByRefArgs);
 	}
