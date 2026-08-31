@@ -11,6 +11,7 @@ public sealed class JwtBearerMiddlewareTests
         var middleware = new JwtBearerMiddleware();
         var context = new DefaultHttpContext();
         HttpContext? capturedContext = null;
+        
         var nextCalled = false;
 
         await middleware.InvokeAsync(context, ctx =>
