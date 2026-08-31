@@ -21,6 +21,7 @@ public sealed class AccountServiceTests
             AccountStatus = "active"
         };
         var client = new FakeHhsMicroserviceClient { AccountResult = dto };
+        
         var service = new AccountService(client);
 
         var result = await service.GetAccountsAsync("req-123", "aspsp-001", "tpp-001");
