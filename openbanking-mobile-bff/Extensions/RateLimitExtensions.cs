@@ -29,7 +29,6 @@ public static class RateLimitExtensions
                 limiterOptions.SegmentsPerWindow = 4;
                 limiterOptions.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
             });
-
             options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
         });
 
