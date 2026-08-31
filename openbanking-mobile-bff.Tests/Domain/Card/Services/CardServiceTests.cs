@@ -21,7 +21,6 @@ public sealed class CardServiceTests
         
         var client = new FakeHhsMicroserviceClient { CardResult = dto };
         var service = new CardService(client);
-
         var result = await service.GetCardsAsync("req-123", "aspsp-001", "tpp-001");
 
         Assert.Equal(1, result.TotalCount);
