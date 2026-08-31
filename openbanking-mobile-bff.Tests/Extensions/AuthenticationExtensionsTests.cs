@@ -12,6 +12,7 @@ public sealed class AuthenticationExtensionsTests
     public void AddBffAuthentication_WithConfiguredJwtValidationOptions_RegistersJwtBearerOptions()
     {
         var services = new ServiceCollection();
+        
         var configuration = new ConfigurationBuilder()
             .AddInMemoryCollection(new Dictionary<string, string?>
             {
