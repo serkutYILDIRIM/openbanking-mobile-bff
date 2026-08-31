@@ -18,6 +18,7 @@ public sealed class CardServiceTests
             CardType = "credit",
             CardStatus = "active"
         };
+        
         var client = new FakeHhsMicroserviceClient { CardResult = dto };
         var service = new CardService(client);
 
