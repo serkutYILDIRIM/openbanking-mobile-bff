@@ -9,6 +9,7 @@ public sealed class GkdTokenResponseTests
 	public void Constructor_Always_InitializesWithNullValues()
 	{
 		var response = new GkdTokenResponse();
+		
 		Assert.Null(response.AccessToken);
 		Assert.Null(response.TokenType);
 		Assert.Null(response.ExpiresIn);
