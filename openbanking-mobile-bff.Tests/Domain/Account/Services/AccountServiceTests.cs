@@ -29,6 +29,7 @@ public sealed class AccountServiceTests
         Assert.Equal(1, result.TotalCount);
         
         var account = Assert.Single(result.Accounts);
+        
         Assert.Equal("acc-ref-1", account.AccountRef);
         Assert.Equal("1234567890", account.AccountNumber);
         Assert.Equal("Jane Doe", account.AccountOwner);
