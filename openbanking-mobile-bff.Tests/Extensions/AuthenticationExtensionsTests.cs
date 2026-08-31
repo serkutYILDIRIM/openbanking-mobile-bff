@@ -26,6 +26,7 @@ public sealed class AuthenticationExtensionsTests
         services.AddBffAuthentication(configuration);
 
         using var provider = services.BuildServiceProvider();
+        
         var options = provider.GetRequiredService<IOptionsMonitor<JwtBearerOptions>>()
             .Get(JwtBearerDefaults.AuthenticationScheme);
 
