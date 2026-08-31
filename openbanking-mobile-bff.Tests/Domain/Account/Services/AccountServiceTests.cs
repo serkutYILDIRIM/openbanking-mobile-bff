@@ -46,7 +46,6 @@ public sealed class AccountServiceTests
         var service = new AccountService(client);
 
         await service.GetAccountsAsync("req-123", "aspsp-001", "tpp-001");
-
         Assert.NotNull(client.CapturedHeaders);
         Assert.Equal(3, client.CapturedHeaders!.Count);
         Assert.Equal("req-123", client.CapturedHeaders[OhvpsConstants.RequestIdHeader]);
