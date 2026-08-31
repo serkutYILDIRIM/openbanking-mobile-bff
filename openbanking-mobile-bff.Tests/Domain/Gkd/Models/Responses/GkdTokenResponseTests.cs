@@ -49,6 +49,7 @@ public sealed class GkdTokenResponseTests
 		};
 
 		var json = JsonSerializer.Serialize(response);
+		
 		using var document = JsonDocument.Parse(json);
 		
 		var root = document.RootElement;
