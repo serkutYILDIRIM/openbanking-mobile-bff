@@ -40,7 +40,6 @@ public sealed class CardServiceTests
         var service = new CardService(client);
 
         await service.GetCardsAsync("req-123", "aspsp-001", "tpp-001");
-
         Assert.NotNull(client.CapturedHeaders);
         Assert.Equal(3, client.CapturedHeaders!.Count);
         Assert.Equal("req-123", client.CapturedHeaders[OhvpsConstants.RequestIdHeader]);
