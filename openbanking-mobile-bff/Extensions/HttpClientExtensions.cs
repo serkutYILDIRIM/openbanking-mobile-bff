@@ -56,7 +56,6 @@ public static class HttpClientExtensions
             .AddPolicyHandler(RetryPolicy.GetRetryPolicy(policyOptions))
             .AddPolicyHandler(CircuitBreakerPolicy.GetCircuitBreakerPolicy(policyOptions))
             .AddPolicyHandler(TimeoutPolicy.GetTimeoutPolicy(policyOptions));
-
         return services;
     }
 }
