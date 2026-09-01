@@ -41,6 +41,7 @@ public sealed class AccountService : IAccountService
     {
         var headers = HttpHeaderUtil.BuildOhvpsHeaders(requestId, aspspCode, tppCode, jwsSignature: null);
         var dto = await _hhsClient.GetAccountByRefAsync(accountRef, headers);
+        
         return new AccountResponse
         {
             AccountRef = dto.AccountRef,
