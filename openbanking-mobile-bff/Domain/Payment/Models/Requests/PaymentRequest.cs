@@ -7,6 +7,7 @@ public sealed class PaymentRequest
     [JsonPropertyName("katilimciBlg")]
     public PaymentParticipantInfo? ParticipantInfo { get; set; }
 
+    
     [JsonPropertyName("gkd")]
     public PaymentGkd? Gkd { get; set; }
 
