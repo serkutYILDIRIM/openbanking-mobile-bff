@@ -17,6 +17,7 @@ public sealed class PaymentRequest
 
 public sealed class PaymentParticipantInfo
 {
+    
     [JsonPropertyName("hhsKod")]
     public string? HhsCode { get; set; }
 
