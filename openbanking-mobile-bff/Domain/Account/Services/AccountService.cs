@@ -16,6 +16,7 @@ public sealed class AccountService : IAccountService
     public async Task<AccountListResponse> GetAccountsAsync(string requestId, string aspspCode, string tppCode)
     {
         var headers = HttpHeaderUtil.BuildOhvpsHeaders(requestId, aspspCode, tppCode, jwsSignature: null);
+        
         var dto = await _hhsClient.GetAccountsAsync(headers);
         return new AccountListResponse
         {
@@ -39,7 +40,9 @@ public sealed class AccountService : IAccountService
     public async Task<AccountResponse> GetAccountByRefAsync(string accountRef, string requestId, string aspspCode, string tppCode)
     {
         var headers = HttpHeaderUtil.BuildOhvpsHeaders(requestId, aspspCode, tppCode, jwsSignature: null);
+        
         var dto = await _hhsClient.GetAccountByRefAsync(accountRef, headers);
+        
         return new AccountResponse
         {
             AccountRef = dto.AccountRef,
