@@ -19,7 +19,6 @@ public sealed class IdempotencyFilterTests
             new List<IFilterMetadata>(),
             new Dictionary<string, object?>(),
             new object());
-
         var nextCalled = false;
 
         await new IdempotencyFilter().OnActionExecutionAsync(context, () =>
