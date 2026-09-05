@@ -81,6 +81,7 @@ public sealed class ConsentController : ControllerBase
         [FromHeader(Name = "X-TPP-Code")] string tppCode)
     {
         await _consentService.DeletePaymentConsentAsync(id, requestId, aspspCode, tppCode);
+        
         return NoContent();
     }
 }
