@@ -24,6 +24,7 @@ public sealed class ConsentController : ControllerBase
         [FromHeader(Name = "X-TPP-Code")] string tppCode)
     {
         var result = await _consentService.CreateAccountConsentAsync(request, requestId, aspspCode, tppCode);
+        
         return Ok(result);
     }
 
