@@ -38,13 +38,11 @@ public sealed class IdempotencyFilterTests
     public async Task OnActionExecutionAsync_WhenNextThrows_PropagatesException()
     {
         var httpContext = new DefaultHttpContext();
-
         var context = new ActionExecutingContext(
             new ActionContext(httpContext, new RouteData(), new ActionDescriptor()),
             new List<IFilterMetadata>(),
             new Dictionary<string, object?>(),
             new object());
-
         await Assert.ThrowsAsync<InvalidOperationException>(() =>
             new IdempotencyFilter().OnActionExecutionAsync(context, () =>
                 throw new InvalidOperationException("Expected exception.")));
