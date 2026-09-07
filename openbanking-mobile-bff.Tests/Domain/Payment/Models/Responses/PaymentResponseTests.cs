@@ -66,11 +66,9 @@ public sealed class PaymentResponseTests
         Assert.True(root.TryGetProperty("rzBlg", out var consentInfo));
         Assert.True(consentInfo.TryGetProperty("rizaNo", out var consentId));
         Assert.Equal("consent-123", consentId.GetString());
-
         Assert.True(root.TryGetProperty("katilimciBlg", out var participantInfo));
         Assert.True(participantInfo.TryGetProperty("hhsKod", out var hhsCode));
         Assert.Equal("hhs-001", hhsCode.GetString());
-
         Assert.True(root.TryGetProperty("odmEmr", out var paymentOrder));
         Assert.True(paymentOrder.TryGetProperty("odmEmrNo", out var paymentOrderId));
         Assert.Equal("order-456", paymentOrderId.GetString());
