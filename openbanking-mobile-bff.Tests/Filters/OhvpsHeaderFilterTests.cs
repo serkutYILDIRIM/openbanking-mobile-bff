@@ -14,8 +14,8 @@ public sealed class OhvpsHeaderFilterTests
     public async Task OnActionExecutionAsync_WithRequestIdHeader_CopiesHeaderToResponse()
     {
         var httpContext = new DefaultHttpContext();
+        
         httpContext.Request.Headers[OhvpsConstants.RequestIdHeader] = "req-123";
-
         var context = new ActionExecutingContext(
             new ActionContext(httpContext, new RouteData(), new ActionDescriptor()),
             new List<IFilterMetadata>(),
