@@ -102,7 +102,6 @@ public sealed class PaymentResponseTests
     public void PaymentParticipantInfo_Constructor_InitializesWithNullValues()
     {
         var participantInfo = new PaymentParticipantInfo();
-
         Assert.Null(participantInfo.HhsCode);
         Assert.Null(participantInfo.YosCode);
     }
