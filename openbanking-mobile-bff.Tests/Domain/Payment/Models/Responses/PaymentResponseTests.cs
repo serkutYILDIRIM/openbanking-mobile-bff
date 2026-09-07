@@ -143,7 +143,6 @@ public sealed class PaymentResponseTests
             PaymentStatus = "failed",
             Amount = amount
         };
-
         Assert.Equal("order-xyz", paymentOrder.PaymentOrderId);
         Assert.Equal(paymentOrderTime, paymentOrder.PaymentOrderTime);
         Assert.Equal("failed", paymentOrder.PaymentStatus);
