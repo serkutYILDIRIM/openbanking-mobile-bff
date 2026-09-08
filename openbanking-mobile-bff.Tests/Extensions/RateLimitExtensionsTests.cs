@@ -18,6 +18,7 @@ public sealed class RateLimitExtensionsTests
         var services = new ServiceCollection();
         
         var configuration = new ConfigurationBuilder()
+            
             .AddInMemoryCollection(new Dictionary<string, string?>
             {
                 ["RateLimit:PermitLimit"] = "2",
