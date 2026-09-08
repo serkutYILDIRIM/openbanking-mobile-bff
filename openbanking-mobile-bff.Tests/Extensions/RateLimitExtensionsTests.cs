@@ -91,7 +91,6 @@ public sealed class RateLimitExtensionsTests
             .GetValue(policy) as Delegate;
 
         Assert.NotNull(partitioner);
-
         var partition = partitioner!.DynamicInvoke(new DefaultHttpContext());
         
         Assert.NotNull(partition);
