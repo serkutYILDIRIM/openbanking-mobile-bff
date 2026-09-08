@@ -64,7 +64,6 @@ public sealed class RateLimitExtensionsTests
         }
 
         using var overflowLease = limiter.AttemptAcquire(1);
-
         Assert.False(overflowLease.IsAcquired is true);
     }
 
