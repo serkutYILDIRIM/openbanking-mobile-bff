@@ -30,7 +30,9 @@ public sealed class RateLimitExtensionsTests
         services.AddBffRateLimiting(configuration);
 
         using var provider = services.BuildServiceProvider();
+        
         var options = provider.GetRequiredService<IOptions<RateLimiterOptions>>().Value;
+        
         using var limiter = CreateSlidingLimiter(options);
 
         using var firstLease = limiter.AttemptAcquire(1);
