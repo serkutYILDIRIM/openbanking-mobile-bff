@@ -51,7 +51,6 @@ public sealed class CardResponseTests
         
         using var document = JsonDocument.Parse(json);
         var root = document.RootElement;
-
         Assert.True(root.TryGetProperty("krtRef", out var cardRef));
         Assert.Equal("card-ref-123", cardRef.GetString());
         Assert.True(root.TryGetProperty("krtNo", out var cardNumber));
