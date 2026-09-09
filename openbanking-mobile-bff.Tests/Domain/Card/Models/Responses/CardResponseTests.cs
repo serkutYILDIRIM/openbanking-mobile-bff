@@ -84,6 +84,7 @@ public sealed class CardResponseTests
         Assert.Equal("4111111111111111", response.CardNumber);
         Assert.Equal("Jane Doe", response.CardHolder);
         Assert.Equal("credit", response.CardType);
+        
         Assert.Equal("active", response.CardStatus);
     }
 }
