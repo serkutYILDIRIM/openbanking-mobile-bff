@@ -12,6 +12,7 @@ public sealed class CardResponseTests
         Assert.Null(response.CardRef);
         Assert.Null(response.CardNumber);
         Assert.Null(response.CardHolder);
+        
         Assert.Null(response.CardType);
         Assert.Null(response.CardStatus);
     }
