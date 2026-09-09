@@ -25,6 +25,7 @@ public sealed class CardServiceTests
 
         Assert.Equal(1, result.TotalCount);
         var card = Assert.Single(result.Cards);
+        
         Assert.Equal("card-ref-1", card.CardRef);
         Assert.Equal("4111111111111111", card.CardNumber);
         Assert.Equal("Jane Doe", card.CardHolder);
