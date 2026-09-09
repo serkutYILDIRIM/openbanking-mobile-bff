@@ -56,6 +56,7 @@ public sealed class CardResponseTests
         Assert.True(root.TryGetProperty("krtNo", out var cardNumber));
         Assert.Equal("4111111111111111", cardNumber.GetString());
         Assert.True(root.TryGetProperty("krtSahibi", out var cardHolder));
+        
         Assert.Equal("Jane Doe", cardHolder.GetString());
         Assert.True(root.TryGetProperty("krtTur", out var cardType));
         Assert.Equal("credit", cardType.GetString());
