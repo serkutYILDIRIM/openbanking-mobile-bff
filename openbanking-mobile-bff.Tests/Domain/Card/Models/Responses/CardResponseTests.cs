@@ -48,6 +48,7 @@ public sealed class CardResponseTests
         };
 
         var json = JsonSerializer.Serialize(response);
+        
         using var document = JsonDocument.Parse(json);
         var root = document.RootElement;
 
