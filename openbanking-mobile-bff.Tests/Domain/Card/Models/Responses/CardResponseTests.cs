@@ -79,7 +79,6 @@ public sealed class CardResponseTests
                             """;
 
         var response = JsonSerializer.Deserialize<CardResponse>(json);
-
         Assert.NotNull(response);
         Assert.Equal("card-ref-123", response.CardRef);
         Assert.Equal("4111111111111111", response.CardNumber);
