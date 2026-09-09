@@ -9,7 +9,6 @@ public sealed class CardResponseTests
     public void Constructor_Always_InitializesWithNullValues()
     {
         var response = new CardResponse();
-
         Assert.Null(response.CardRef);
         Assert.Null(response.CardNumber);
         Assert.Null(response.CardHolder);
