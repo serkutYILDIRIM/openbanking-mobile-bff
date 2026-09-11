@@ -18,6 +18,7 @@ public sealed class RateLimitExtensionsTests
         var services = new ServiceCollection();
         
         var configuration = new ConfigurationBuilder()
+            
             .AddInMemoryCollection(new Dictionary<string, string?>
             {
                 ["RateLimit:PermitLimit"] = "2",
@@ -29,7 +30,9 @@ public sealed class RateLimitExtensionsTests
         services.AddBffRateLimiting(configuration);
 
         using var provider = services.BuildServiceProvider();
+        
         var options = provider.GetRequiredService<IOptions<RateLimiterOptions>>().Value;
+        
         using var limiter = CreateSlidingLimiter(options);
 
         using var firstLease = limiter.AttemptAcquire(1);
@@ -61,7 +64,6 @@ public sealed class RateLimitExtensionsTests
         }
 
         using var overflowLease = limiter.AttemptAcquire(1);
-
         Assert.False(overflowLease.IsAcquired is true);
     }
 
@@ -89,7 +91,6 @@ public sealed class RateLimitExtensionsTests
             .GetValue(policy) as Delegate;
 
         Assert.NotNull(partitioner);
-
         var partition = partitioner!.DynamicInvoke(new DefaultHttpContext());
         
         Assert.NotNull(partition);

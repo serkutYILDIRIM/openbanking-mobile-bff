@@ -9,10 +9,10 @@ public sealed class CardResponseTests
     public void Constructor_Always_InitializesWithNullValues()
     {
         var response = new CardResponse();
-
         Assert.Null(response.CardRef);
         Assert.Null(response.CardNumber);
         Assert.Null(response.CardHolder);
+        
         Assert.Null(response.CardType);
         Assert.Null(response.CardStatus);
     }
@@ -49,14 +49,15 @@ public sealed class CardResponseTests
         };
 
         var json = JsonSerializer.Serialize(response);
+        
         using var document = JsonDocument.Parse(json);
         var root = document.RootElement;
-
         Assert.True(root.TryGetProperty("krtRef", out var cardRef));
         Assert.Equal("card-ref-123", cardRef.GetString());
         Assert.True(root.TryGetProperty("krtNo", out var cardNumber));
         Assert.Equal("4111111111111111", cardNumber.GetString());
         Assert.True(root.TryGetProperty("krtSahibi", out var cardHolder));
+        
         Assert.Equal("Jane Doe", cardHolder.GetString());
         Assert.True(root.TryGetProperty("krtTur", out var cardType));
         Assert.Equal("credit", cardType.GetString());
@@ -78,12 +79,12 @@ public sealed class CardResponseTests
                             """;
 
         var response = JsonSerializer.Deserialize<CardResponse>(json);
-
         Assert.NotNull(response);
         Assert.Equal("card-ref-123", response.CardRef);
         Assert.Equal("4111111111111111", response.CardNumber);
         Assert.Equal("Jane Doe", response.CardHolder);
         Assert.Equal("credit", response.CardType);
+        
         Assert.Equal("active", response.CardStatus);
     }
 }
