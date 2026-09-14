@@ -13,6 +13,7 @@ public sealed class ErrorResponseTests
         Assert.Equal(string.Empty, response.Id);
         Assert.Equal(string.Empty, response.Path);
         Assert.Equal(default, response.Timestamp);
+        
         Assert.Equal(default, response.HttpCode);
         Assert.Equal(string.Empty, response.ErrorCode);
         Assert.Equal(string.Empty, response.ErrorMessage);
