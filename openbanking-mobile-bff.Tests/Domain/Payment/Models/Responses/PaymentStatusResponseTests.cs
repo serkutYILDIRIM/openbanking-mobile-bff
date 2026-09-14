@@ -19,7 +19,6 @@ public sealed class PaymentStatusResponseTests
     {
         var amount = new PaymentAmountInfo { Amount = "2500.75", CurrencyCode = "TRY" };
         var orderTime = DateTime.UtcNow;
-
         var response = new PaymentStatusResponse
         {
             PaymentOrderId = "order-123",
