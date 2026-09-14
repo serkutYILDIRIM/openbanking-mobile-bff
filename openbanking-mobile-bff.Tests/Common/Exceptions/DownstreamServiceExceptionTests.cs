@@ -31,7 +31,6 @@ public sealed class DownstreamServiceExceptionTests
     public void Constructor_WithMessage_SetsErrorMessageAndExceptionMessage()
     {
         var exception = new DownstreamServiceException("hhs-service", "Gateway timeout occurred", HttpStatusCode.GatewayTimeout);
-
         Assert.Equal("Gateway timeout occurred", exception.ErrorMessage);
         Assert.Equal("Gateway timeout occurred", exception.Message);
     }
