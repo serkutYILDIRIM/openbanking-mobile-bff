@@ -12,6 +12,7 @@ public sealed class PaymentStatusResponseTests
         Assert.Null(response.PaymentOrderId);
       
         Assert.Null(response.PaymentOrderTime);
+     
         Assert.Null(response.Amount);
     }
 
