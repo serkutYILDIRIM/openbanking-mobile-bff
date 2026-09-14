@@ -31,6 +31,7 @@ public sealed class PaymentStatusResponseTests
         Assert.Equal("COMPLETED", response.PaymentStatus);
         Assert.Equal(orderTime, response.PaymentOrderTime);
         Assert.Same(amount, response.Amount);
+      
         Assert.Equal("2500.75", response.Amount?.Amount);
         Assert.Equal("TRY", response.Amount?.CurrencyCode);
     }
