@@ -18,7 +18,7 @@ public sealed class PaymentStatusResponseTests
     [Fact]
     public void Properties_WithProvidedValues_PreservesAssignedState()
     {
-        var amount = new PaymentAmountInfo { Amount = "2500.75", CurrencyCode = "TRY" };
+     ğ   var amount = new PaymentAmountInfo { Amount = "2500.75", CurrencyCode = "TRY" };
         var orderTime = DateTime.UtcNow;
         var response = new PaymentStatusResponse
         {
@@ -30,6 +30,7 @@ public sealed class PaymentStatusResponseTests
 
         Assert.Equal("order-123", response.PaymentOrderId);
         Assert.Equal("COMPLETED", response.PaymentStatus);
+     
         Assert.Equal(orderTime, response.PaymentOrderTime);
         Assert.Same(amount, response.Amount);
       
