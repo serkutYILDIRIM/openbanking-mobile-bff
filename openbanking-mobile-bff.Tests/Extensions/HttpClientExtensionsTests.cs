@@ -28,6 +28,7 @@ public sealed class HttpClientExtensionsTests
         using var provider = services.BuildServiceProvider();
 
         var yosClient = provider.GetRequiredService<IYosMicroserviceClient>();
+        
         var hhsClient = provider.GetRequiredService<IHhsMicroserviceClient>();
         var apiGatewayClient = provider.GetRequiredService<IApiGatewayClient>();
 
