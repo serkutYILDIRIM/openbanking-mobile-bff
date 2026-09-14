@@ -41,7 +41,6 @@ public sealed class HttpClientExtensionsTests
     {
         var httpClientField = client.GetType().GetField("_httpClient", BindingFlags.Instance | BindingFlags.NonPublic);
         Assert.NotNull(httpClientField);
-
         var httpClient = httpClientField!.GetValue(client) as HttpClient;
         Assert.NotNull(httpClient);
 
