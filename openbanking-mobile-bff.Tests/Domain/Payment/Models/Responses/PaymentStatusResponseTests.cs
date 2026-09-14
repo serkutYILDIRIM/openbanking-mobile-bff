@@ -9,7 +9,6 @@ public sealed class PaymentStatusResponseTests
     public void Constructor_Always_InitializesWithNullValues()
     {
         var response = new PaymentStatusResponse();
-
         Assert.Null(response.PaymentOrderId);
         Assert.Null(response.PaymentOrderTime);
         Assert.Null(response.Amount);
