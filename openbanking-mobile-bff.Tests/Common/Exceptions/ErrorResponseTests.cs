@@ -47,6 +47,7 @@ public sealed class ErrorResponseTests
         Assert.Equal(HttpStatusCode.BadRequest, response.HttpCode);
         Assert.Equal("TR.OHVPS.ValidationError", response.ErrorCode);
         Assert.Equal("Validation failed.", response.ErrorMessage);
+        
         Assert.Same(fieldErrors, response.FieldErrors);
         Assert.Equal("amount", response.FieldErrors[0].Field);
         Assert.Equal("Amount is required.", response.FieldErrors[0].Message);
