@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Xunit;
 using openbanking_mobile_bff.Controllers;
 using openbanking_mobile_bff.Domain.Consent.Models.Requests;
 using openbanking_mobile_bff.Domain.Consent.Models.Responses;
@@ -66,6 +67,7 @@ public sealed class ConsentControllerTests
         var actionResult = await controller.GetPaymentConsent("consent-5", "req-123", "aspsp-001", "tpp-001");
         var ok = Assert.IsType<OkObjectResult>(actionResult.Result);
         var value = Assert.IsType<ConsentResponse>(ok.Value);
+
         Assert.Same(expected, value);
         Assert.Equal(("consent-5", "req-123", "aspsp-001", "tpp-001"), service.GetPaymentConsentArgs);
     }
@@ -75,6 +77,7 @@ public sealed class ConsentControllerTests
         var service = new FakeConsentService();
         var controller = new ConsentController(service);
         var result = await controller.DeletePaymentConsent("consent-6", "req-123", "aspsp-001", "tpp-001");
+
         Assert.IsType<NoContentResult>(result);
         Assert.Equal(("consent-6", "req-123", "aspsp-001", "tpp-001"), service.DeletePaymentConsentArgs);
     }
